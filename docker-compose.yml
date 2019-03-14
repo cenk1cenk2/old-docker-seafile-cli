@@ -1,0 +1,12 @@
+version: '3'
+services:
+  seafile-sync-client:
+    build: ./build/.
+    image: seafile-sync-client
+    env_file: .env
+    container_name: seafile-sync-client
+    volumes:
+      - ./src:/seafile-client
+      - ../insync:${DATA_DIR}/e1a9120a-6743-470f-9444-15ec6a3594af
+    restart: "no"
+    network_mode: "bridge"
