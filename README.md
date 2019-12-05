@@ -1,7 +1,7 @@
 ```
 name:         | seafile-cli
 compiler:     | docker-compose
-version:      | v3.1, 20190228
+version:      | v4.0, 20191205
 ```
 
 ## Description:

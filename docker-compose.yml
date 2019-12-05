@@ -7,6 +7,6 @@ services:
     container_name: seafile-sync-client
     volumes:
       - ./src:/seafile-client
-      - ../insync:${DATA_DIR}/e1a9120a-6743-470f-9444-15ec6a3594af
+      - /root/test:/data/ea8125af-5698-49fe-9e75-a3c260d56f31
     restart: "no"
     network_mode: "bridge"

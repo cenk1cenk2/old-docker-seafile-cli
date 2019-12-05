@@ -14,9 +14,9 @@ get () {
 }
 
 setup_lib_sync(){
-    if [ ! -d $DATA_DIR ]; then
+    if [ ! -d /data ]; then
       echo "Using new data directory: $DATA_DIR"
-      mkdir -p $DATA_DIR
+      mkdir -p /data
     fi
     TOKEN_JSON=$(curl -d "username=$USERNAME" -d "password=$PASSWORD" ${SERVER_URL}/api2/auth-token/ 2> /dev/null)
     TOKEN=$(get token "$TOKEN_JSON")
@@ -29,7 +29,7 @@ setup_lib_sync(){
       LIB_NAME=$(get name "$LIB_JSON")
       ## Use lib name or lib id
       #LIB_DIR=${DATA_DIR}/${LIB_NAME}
-      LIB_DIR=${DATA_DIR}/${LIB}
+      LIB_DIR=/data/${LIB}
       set +e
       LIB_IN_SYNC=$(echo "$LIBS_IN_SYNC" | grep "$LIB")
       set -e
@@ -46,15 +46,11 @@ keep_in_foreground() {
   # need a foreground process. This has a dual use as a supervisor script because
   # as soon as one process is not running, the command returns an exit code >0
   # leading to a script abortion thanks to "set -e".
-  while true
+  while pgrep ccnet && pgrep seaf-daemon > /dev/null;:
   do
-    for SEAFILE_PROC in "ccnet" "seaf-daemon"
-    do
-      pkill -0 -f "${SEAFILE_PROC}"
-      sleep 5
-    done
+    echo "seafile alive and well, sleeping for ${SLEEPTIME:-600}"
     seaf-cli status
-    sleep 60
+    sleep ${SLEEPTIME:-600}
   done
 }
 
