@@ -7,6 +7,7 @@ services:
     container_name: seafile-sync-client
     volumes:
       - ./src:/seafile-client
+      # mount libraries to /data/libraryid
       - /root/test:/data/ea8125af-5698-49fe-9e75-a3c260d56f31
     restart: "no"
     network_mode: "bridge"
