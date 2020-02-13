@@ -1,0 +1,9 @@
+version: '3'
+services:
+  seafile-cli:
+    image: cenk1cenk2/seafile-cli
+    env_file: .env
+    volumes:
+      - ./src:/seafile-client
+      # mount libraries to /data/libraryid
+    network_mode: "bridge"
