@@ -6,8 +6,6 @@
 
 - [Description:](#description)
 - [Setup:](#setup)
-- [Changelog](#changelog)
-  - [v4.0, 20191205](#v40-20191205)
 
 <!-- tocstop -->
 
