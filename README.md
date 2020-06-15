@@ -15,11 +15,3 @@ This script runs a seafile-client and syncs the mounted folders in the server. S
 
 - `chmod +x ./init-env.sh && ./init-env.sh && nano init-env.sh`
 - Add the same library ids under the volumes of `/data/$LIBRARYID`.
-
-## Changelog
-
-### v4.0, 20191205
-
-- Fixed memory leak. It no more restarts seafile daemon each time.
-- Fixed data mount directory to `/data`.
-- Added `inint-env.sh` to initialize env variables.
