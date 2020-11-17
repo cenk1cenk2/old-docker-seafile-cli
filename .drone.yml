@@ -46,3 +46,6 @@ steps:
         - cron
       branch:
         - master
+
+image_pull_secrets:
+  - dockerconfigjson
